@@ -1,0 +1,55 @@
+.card{
+    width: 3.5in;
+    height: 2in;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    
+    overflow: hidden;
+}
+
+.top {
+    height: 80%;
+    background: "blue";
+
+
+
+}
+
+.bottom {
+    height: 20%;
+    background: "gold";
+}
+
+.photo-column {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+
+    width: 1.25in;
+    height: 100%;
+}
+
+.photo {
+    width: 1.00in;
+    height: 1.55in;
+    object-fit: center;
+}
+
+.qr {
+    width: 0.6in;
+    height: 0.6in;
+    object-fit: contain;
+    background: #fff;
+    padding: 4px;
+
+    display: block;
+}
+
+.bottom-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
