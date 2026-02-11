@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JS Activity</title>
+</head>
+<body>
+
+  <h2 id="message">Welcome Students</h2>
+  <input type="text" id="alertInput" placeholder="Enter alert message">
+  <button onclick="changeMessage()">Click Me</button>
+  <button onclick="showAlert()">Alert Button</button>
+
+  <script>
+    function changeMessage() {
+      document.getElementById("message").innerHTML = "JavaScript is Fun!";
+      document.getElementById("message").style.color = "red";
+    }
+    
+    function showAlert() {
+        // Get the message from the input field
+      const message = document.getElementById("alertInput").value || "This is an alert!"; 
+      console.log("Alert button pressed with message: " + message);
+      alert(message);
+    }
+  </script>
+</body>
+</html>
