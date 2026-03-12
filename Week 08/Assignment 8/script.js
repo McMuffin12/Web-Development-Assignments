@@ -20,6 +20,7 @@ const taskList = document.getElementById("taskList");
 const errorMessage = document.getElementById("errorMessage");
 
 // Grab count elements so we can update totals
+const charCountEl = document.getElementById("charCount");
 const totalCountEl = document.getElementById("totalCount");
 const doneCountEl = document.getElementById("doneCount");
 
@@ -73,6 +74,12 @@ function showError(message) {
 // Clear the error message
 function clearError() {
   errorMessage.textContent = "";
+}
+
+// Update character count display
+function updateCharCount() {
+  const count = input.value.length;
+  charCountEl.textContent = `Char: ${count}`;
 }
 
 
@@ -172,6 +179,7 @@ function render() {
 
   // Update counters every render
   updateCounts();
+  updateCharCount();
 }
 
 
@@ -224,11 +232,12 @@ form.addEventListener("submit", function (event) {
   render();
 });
 
-// Clear error while user types (nice UX)
+// When typing clear error message (if any) and update char count
 input.addEventListener("input", function () {
   if (input.value.trim() !== "") {
     clearError();
   }
+  updateCharCount();
 });
 
 // Clear completed tasks
