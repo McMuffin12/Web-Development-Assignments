@@ -252,6 +252,7 @@ clearCompletedBtn.addEventListener("click", function () {
 
 // Clear all tasks
 clearAllBtn.addEventListener("click", function () {
+  if (!confirm("Are you sure you want to clear ALL tasks?")) return; // if they cancel, do nothing
   // Remove everything
   tasks = [];
 
