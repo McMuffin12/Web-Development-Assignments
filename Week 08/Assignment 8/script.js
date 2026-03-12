@@ -191,6 +191,15 @@ form.addEventListener("submit", function (event) {
     return;
   }
 
+  // Check for duplicates
+  for (const element of tasks) {
+  if (element.text.toLowerCase() === text.toLowerCase()) // Convert to lower to avoid case-sensitive duplicates
+  {
+    showError("Task already exists.");
+    return;
+  }
+}
+
   // Clear any previous error
   clearError();
 
