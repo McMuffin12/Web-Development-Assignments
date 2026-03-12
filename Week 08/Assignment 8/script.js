@@ -169,9 +169,16 @@ function render() {
   // Clear the current list UI
   taskList.innerHTML = "";
 
-  // For each task, if it passes the filter, add it
-  for (const task of tasks) {
-    if (passesFilter(task)) {
+  const visible = tasks.filter(passesFilter); // get only the visible tasks based on filter
+
+  // If no tasks, show "no tasks" message, otherwise build list items
+  if (visible.length === 0) {
+    const li = document.createElement("li");
+    li.classList.add("no-tasks");
+    li.textContent = "No tasks available";
+    taskList.appendChild(li);
+  } else { // build list items for visible tasks
+    for (const task of visible) {
       const li = createTaskElement(task);
       taskList.appendChild(li);
     }
