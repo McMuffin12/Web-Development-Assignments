@@ -153,6 +153,11 @@ function createTaskElement(task) {
   delBtn.textContent = "Delete";
   delBtn.classList.add("btn", "danger", "small");
 
+  // edit button
+  const editBtn = document.createElement("button");
+  editBtn.textContent = "Edit";
+  editBtn.classList.add("btn", "small");
+
   // Remove task on click
   delBtn.addEventListener("click", function () {
     // Keep only tasks that do NOT match this task id
@@ -163,7 +168,18 @@ function createTaskElement(task) {
     render();
   });
 
+  // Edit task on click
+  editBtn.addEventListener("click", function () {
+    const newText = prompt("Edit task:", task.text);
+    if (newText && newText.trim() !== "") {
+      task.text = newText.trim();
+      saveTasks();
+      render();
+    }
+  });
+
   // Add span + buttons to the list item
+  btnBox.appendChild(editBtn);
   btnBox.appendChild(delBtn);
   li.appendChild(span);
   li.appendChild(btnBox);
