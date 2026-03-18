@@ -41,6 +41,9 @@ let tasks = [];
 // Track which filter is active
 let currentFilter = "all";
 
+// Track the current search query
+let searchQuery = "";
+
 
 // ---------- 3) LOCAL STORAGE HELPERS ----------
 
@@ -100,9 +103,13 @@ function updateCounts() {
 
 // Decide if a task should be visible based on currentFilter
 function passesFilter(task) {
-  if (currentFilter === "all") return true;          // show everything
-  if (currentFilter === "active") return !task.done; // show only not done
-  if (currentFilter === "completed") return task.done; // show only done
+  // Filter by status else show all
+  if (currentFilter === "active" && task.done) return false;
+  if (currentFilter === "completed" && !task.done) return false;
+  // if search query is not empty and task text does not include the search query, hide it
+  if (searchQuery.trim() !== "" && !task.text.toLowerCase().includes(searchQuery.toLowerCase())) {
+    return false;
+  }
   return true;
 }
 
@@ -281,6 +288,15 @@ for (const btn of filterButtons) {
     btn.classList.add("active");
 
     // Re-render list with new filter
+    render();
+  });
+}
+
+// Search input event listener
+const searchInput = document.getElementById("searchInput");
+if (searchInput) {
+  searchInput.addEventListener("input", function () {
+    searchQuery = searchInput.value;
     render();
   });
 }
