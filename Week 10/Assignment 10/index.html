@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Application</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="getWeather">Get Weather</button>
+
+    <form id="weatherForm">
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required>
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state">
+
+        <label for="country">Country code:</label>
+        <input type="text" id="country" name="country" maxlength="2" placeholder="e.g., US" required>
+
+        <button type="submit">Get Weather</button>
+    </form>
+
+    <div id="output"></div>
+    <script src="script.js"></script>
 
 </body>
 </html>
